@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息表格</title>
+</head>
+<body>
+<h1>学生信息表格</h1>
+<div>
+    <table border="1px">
+        <tr style="background: #ee0000">
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <th>{{ row.student_number }}</th>
+            <th>{{ row.name }}</th>
+            <th>{{ row.height }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
