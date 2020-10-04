@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, request, jsonify
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import FlaskForm
@@ -105,6 +105,15 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
 
+@app.route("/get_data", methods=["GET"])
+def weather():
+    if request.method == "GET":
+
+        with open("./data/student_information.json", encoding='utf-8') as fin:
+            data = json.loads(fin.read())['data']
+
+    return jsonify(username=[x['name'] for x in data],
+                   length=[x['height'] for x in data])
 
 # # 2.增加记录
 # admin = User(username='admin', email='admin@example.com')
